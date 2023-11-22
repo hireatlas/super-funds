@@ -1,0 +1,63 @@
+{
+  "name":              "hireatlas/laravel-australian-superannuation-funds",
+  "description":       "Pull the latest list of superannuation funds directly from the Australian Government, right into your Laravel application.",
+  "type":              "library",
+  "license":           "MIT",
+  "authors":           [
+    {
+      "name":  "Mitchell Davis",
+      "email": "mdavis@atlas.dev"
+    }
+  ],
+  "require":           {
+    "guzzlehttp/guzzle":  "^7.8",
+    "illuminate/support": "^10.0"
+  },
+  "require-dev":       {
+    "orchestra/testbench": "^8.15",
+    "pestphp/pest":        "^2.24"
+  },
+  "autoload":          {
+    "psr-4": {
+      "Atlas\\LaravelAustralianSuperannuationFunds\\": "src/"
+    }
+  },
+  "autoload-dev":      {
+    "psr-4": {
+      "Atlas\\LaravelAustralianSuperannuationFunds\\Tests\\": "tests/",
+      "Workbench\\App\\":                                     "workbench/app/",
+      "Workbench\\Database\\Factories\\":                     "workbench/database/factories/",
+      "Workbench\\Database\\Seeders\\":                       "workbench/database/seeders/"
+    }
+  },
+  "scripts":           {
+    "post-autoload-dump": [
+      "@clear",
+      "@prepare"
+    ],
+    "clear":              "@php vendor/bin/testbench package:purge-skeleton --ansi",
+    "prepare":            "@php vendor/bin/testbench package:discover --ansi",
+    "build":              "@php vendor/bin/testbench workbench:build --ansi",
+    "serve":              [
+      "Composer\\Config::disableProcessTimeout",
+      "@build",
+      "@php vendor/bin/testbench serve"
+    ],
+    "test":               "@php vendor/bin/pest"
+  },
+  "extra":             {
+    "laravel": {
+      "providers": [
+        "Atlas\\LaravelAustralianSuperannuationFunds\\ServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable":     true,
+  "config":            {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
