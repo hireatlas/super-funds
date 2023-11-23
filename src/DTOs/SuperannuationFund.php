@@ -2,17 +2,17 @@
 
 namespace Atlas\LaravelAustralianSuperannuationFunds\DTOs;
 
-readonly class SuperannuationFund
+class SuperannuationFund
 {
     public function __construct(
-        public string $abn,
-        public string $fundName,
-        public string $usi,
-        public string $productName,
-        public bool $restrictsContributions,
-        public bool $valid,
-        public \DateTimeInterface $validFrom,
-        public ?\DateTimeInterface $validTo = null,
+        public readonly string $abn,
+        public readonly string $fundName,
+        public readonly string $usi,
+        public readonly string $productName,
+        public readonly bool $restrictsContributions,
+        public readonly bool $valid,
+        public readonly \DateTimeInterface $validFrom,
+        public readonly ?\DateTimeInterface $validTo = null,
     ) {
         //
     }
