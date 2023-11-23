@@ -10,12 +10,25 @@ use Illuminate\Support\Stringable;
 
 class Parser implements ParserContract
 {
+    /**
+     * @link https://superfundlookup.gov.au/Tools/DownloadUsiList
+     */
     public function parse(string $file): Collection {
         return collect(explode("\r\n", $file))
-            ->skip(2) // Headers and separator
-            ->reverse()
-            ->skip(5) // Footer
-            ->reverse()
+            ->filter(function (string $row) {
+                // Filter out any rows that are not 481 characters long (footers)
+                if (strlen($row) !== 481) {
+                    return false;
+                }
+
+                // Filter out any known strings that should not be parsed (headers)
+                $headerRows = [
+                    'ABN         FundName                                                                                                                                                                                                 USI                  ProductName                                                                                                                                                                                              ContributionRestrictions From       To        ',
+                    '----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------ ---------- ----------',
+                ];
+
+                return !in_array($row, $headerRows);
+            })
             ->values()
             ->map(function (string $row) {
                 $row = new Stringable($row);
