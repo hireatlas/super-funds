@@ -1,9 +1,9 @@
-name: run-pint
+name: run-formatter
 
 on: [ push ]
 
 jobs:
-  pint:
+  format:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,8 +20,7 @@ jobs:
           coverage:    none
 
       - name: Install dependencies
-        run:  |
-              composer install --prefer-dist --no-interaction
+        run:  composer install --prefer-dist --no-interaction
 
       - name: Execute formatter
         run:  composer format
