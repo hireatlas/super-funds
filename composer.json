@@ -25,10 +25,7 @@
   },
   "autoload-dev":      {
     "psr-4": {
-      "Atlas\\LaravelAustralianSuperannuationFunds\\Tests\\": "tests/",
-      "Workbench\\App\\":                                     "workbench/app/",
-      "Workbench\\Database\\Factories\\":                     "workbench/database/factories/",
-      "Workbench\\Database\\Seeders\\":                       "workbench/database/seeders/"
+      "Atlas\\LaravelAustralianSuperannuationFunds\\Tests\\": "tests/"
     }
   },
   "scripts":           {

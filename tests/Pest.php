@@ -13,4 +13,5 @@
 
 use Atlas\LaravelAustralianSuperannuationFunds\Tests\TestCase;
 
-uses(TestCase::class)->in('Feature');
+uses(TestCase::class)
+    ->in('Feature', 'Unit');
