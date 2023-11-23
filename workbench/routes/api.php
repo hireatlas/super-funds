@@ -11,4 +11,3 @@ Route::get('/superannuation-funds', function () {
 
     return $superannuationFunds;
 });
-

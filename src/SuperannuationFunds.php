@@ -10,12 +10,13 @@ class SuperannuationFunds
 {
     public function __construct(
         private Downloader $downloader,
-        private Parser     $parser
+        private Parser $parser
     ) {
         //
     }
 
-    public function fetch(): Collection {
+    public function fetch(): Collection
+    {
         $file = $this->downloader->download();
 
         $superannuationFunds = $this->parser->parse($file);
@@ -23,5 +24,3 @@ class SuperannuationFunds
         return $superannuationFunds;
     }
 }
-
-

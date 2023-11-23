@@ -13,7 +13,8 @@ class Parser implements ParserContract
     /**
      * @link https://superfundlookup.gov.au/Tools/DownloadUsiList
      */
-    public function parse(string $file): Collection {
+    public function parse(string $file): Collection
+    {
         return collect(explode("\r\n", $file))
             ->filter(function (string $row) {
                 // Filter out any rows that are not 481 characters long (footers)
@@ -27,7 +28,7 @@ class Parser implements ParserContract
                     '----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------ ---------- ----------',
                 ];
 
-                return !in_array($row, $headerRows);
+                return ! in_array($row, $headerRows);
             })
             ->values()
             ->map(function (string $row) {

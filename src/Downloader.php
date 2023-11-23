@@ -14,16 +14,14 @@ class Downloader implements DownloaderContract
         //
     }
 
-    public function download(): string {
+    public function download(): string
+    {
         $response = Http::get($this->url);
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             throw new DownloadException();
         }
 
         return $response->body();
     }
 }
-
-
-

@@ -7,7 +7,8 @@ use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Parser as ParserContrac
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    public function register() {
+    public function register()
+    {
         $this->app->bind(DownloaderContract::class, function () {
             return new Downloader();
         });
@@ -17,4 +18,3 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
     }
 }
-
