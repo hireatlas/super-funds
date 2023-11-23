@@ -32,7 +32,8 @@
     }
   },
   "scripts":           {
-    "test": "@php vendor/bin/pest"
+    "format": "@php vendor/bin/pint",
+    "test":   "@php vendor/bin/pest"
   },
   "extra":             {
     "laravel": {
