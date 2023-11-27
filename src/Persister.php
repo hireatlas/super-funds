@@ -65,7 +65,6 @@ class Persister implements PersisterContract
                     'valid',
                     'valid_from',
                     'valid_to',
-                    'updated_at',
                 ]
             );
     }
