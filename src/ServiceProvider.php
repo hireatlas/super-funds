@@ -4,9 +4,22 @@ namespace Atlas\LaravelAustralianSuperannuationFunds;
 
 use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Downloader as DownloaderContract;
 use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Parser as ParserContract;
+use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Persister as PersisterContract;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
+    /**
+     * Bootstrap any package services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerMigrations();
+        $this->registerPublishing();
+        $this->registerCommands();
+    }
+
     public function register()
     {
         $this->app->bind(DownloaderContract::class, function () {
@@ -16,5 +29,49 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->bind(ParserContract::class, function () {
             return new Parser();
         });
+
+        $this->app->bind(PersisterContract::class, function () {
+            return new Persister(SuperannuationFunds::$model);
+        });
+    }
+
+    /**
+     * Register the package migrations.
+     *
+     * @return void
+     */
+    protected function registerMigrations()
+    {
+        if (SuperannuationFunds::$runsMigrations && $this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        }
+    }
+
+    /**
+     * Register the package's publishable resources.
+     *
+     * @return void
+     */
+    protected function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../database/migrations' => $this->app->databasePath('migrations'),
+            ], 'superannuation-funds-migrations');
+        }
+    }
+
+    /**
+     * Register the package's commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Console\UpdateSuperannuationFunds::class,
+            ]);
+        }
     }
 }

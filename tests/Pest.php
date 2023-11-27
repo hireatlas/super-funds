@@ -12,6 +12,10 @@
 */
 
 use Atlas\LaravelAustralianSuperannuationFunds\Tests\TestCase;
+use Atlas\LaravelAustralianSuperannuationFunds\Tests\TestCaseWithRefreshDatabase;
 
 uses(TestCase::class)
-    ->in('Feature', 'Unit');
+    ->in('Unit');
+
+uses(TestCaseWithRefreshDatabase::class)
+    ->in('Feature');

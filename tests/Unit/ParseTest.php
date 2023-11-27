@@ -1,6 +1,6 @@
 <?php
 
-use Atlas\LaravelAustralianSuperannuationFunds\DTOs\SuperannuationFund;
+use Atlas\LaravelAustralianSuperannuationFunds\DTOs\SuperannuationFundDTO;
 use Atlas\LaravelAustralianSuperannuationFunds\Exceptions\ParseException;
 use Atlas\LaravelAustralianSuperannuationFunds\Parser;
 use Illuminate\Support\Carbon;
@@ -27,7 +27,7 @@ it('can parse the list of superannuation funds', function (string $file) {
         ->not->toBeEmpty();
 
     expect($result->first())
-        ->toBeInstanceOf(SuperannuationFund::class);
+        ->toBeInstanceOf(SuperannuationFundDTO::class);
 })
     ->with([
         'valid-data' => file_get_contents(__DIR__.'/stubs/valid-data.txt'),
@@ -43,11 +43,11 @@ it('can correctly parse a valid item', function (string $file) {
     expect($result)
         ->toHaveCount(1);
 
-    /** @var SuperannuationFund $superannuationFund */
+    /** @var SuperannuationFundDTO $superannuationFund */
     $superannuationFund = $result->first();
 
     expect($superannuationFund)
-        ->toBeInstanceOf(SuperannuationFund::class)
+        ->toBeInstanceOf(SuperannuationFundDTO::class)
         ->toHaveProperties([
             'abn' => '12345678901',
             'fundName' => 'ACME SUPERANNUATION FUND',
@@ -71,11 +71,11 @@ it('can correctly parse a valid but expired item', function (string $file) {
     expect($result)
         ->toHaveCount(1);
 
-    /** @var SuperannuationFund $superannuationFund */
+    /** @var SuperannuationFundDTO $superannuationFund */
     $superannuationFund = $result->first();
 
     expect($superannuationFund)
-        ->toBeInstanceOf(SuperannuationFund::class)
+        ->toBeInstanceOf(SuperannuationFundDTO::class)
         ->toHaveProperties([
             'abn' => '12345678901',
             'fundName' => 'ACME SUPERANNUATION FUND',
