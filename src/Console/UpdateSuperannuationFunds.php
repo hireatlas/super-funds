@@ -21,8 +21,12 @@ class UpdateSuperannuationFunds extends Command
      */
     protected $description = 'Persists the latest list of superannuation funds.';
 
-    public function handle(SuperannuationFunds $superannuationFunds)
+    public function handle(SuperannuationFunds $superannuationFunds): int
     {
-        $superannuationFunds->persist();
+        $models = $superannuationFunds->persist();
+
+        $this->info(sprintf('Persisted %d models to the database.', $models->count()));
+
+        return 0;
     }
 }
