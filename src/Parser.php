@@ -58,7 +58,7 @@ class Parser implements ParserContract
                         'Australia/Sydney'
                     );
 
-                    if ($validTo->equalTo(Carbon::parse('9999-12-31', 'Australia/Sydney'))) {
+                    if ($validTo->year === 9999) {
                         $validTo = null;
                     }
 
