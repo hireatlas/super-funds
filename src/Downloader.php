@@ -1,9 +1,9 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds;
+namespace Atlas\SuperFunds;
 
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Downloader as DownloaderContract;
-use Atlas\LaravelAustralianSuperannuationFunds\Exceptions\DownloadException;
+use Atlas\SuperFunds\Contracts\Downloader as DownloaderContract;
+use Atlas\SuperFunds\Exceptions\DownloadException;
 use Illuminate\Support\Facades\Http;
 
 class Downloader implements DownloaderContract

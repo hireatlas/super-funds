@@ -1,5 +1,5 @@
 {
-  "name":              "hireatlas/laravel-australian-superannuation-funds",
+  "name":              "hireatlas/super-funds",
   "description":       "Pull the latest list of superannuation funds directly from the Australian Government, right into your Laravel application.",
   "type":              "library",
   "license":           "MIT",
@@ -22,12 +22,12 @@
   },
   "autoload":          {
     "psr-4": {
-      "Atlas\\LaravelAustralianSuperannuationFunds\\": "src/"
+      "Atlas\\SuperFunds\\": "src/"
     }
   },
   "autoload-dev":      {
     "psr-4": {
-      "Atlas\\LaravelAustralianSuperannuationFunds\\Tests\\": "tests/"
+      "Atlas\\SuperFunds\\Tests\\": "tests/"
     }
   },
   "scripts":           {
@@ -37,7 +37,7 @@
   "extra":             {
     "laravel": {
       "providers": [
-        "Atlas\\LaravelAustralianSuperannuationFunds\\ServiceProvider"
+        "Atlas\\SuperFunds\\ServiceProvider"
       ]
     }
   },

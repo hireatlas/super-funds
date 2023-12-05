@@ -11,8 +11,8 @@
 |
 */
 
-use Atlas\LaravelAustralianSuperannuationFunds\Tests\TestCase;
-use Atlas\LaravelAustralianSuperannuationFunds\Tests\TestCaseWithRefreshDatabase;
+use Atlas\SuperFunds\Tests\TestCase;
+use Atlas\SuperFunds\Tests\TestCaseWithRefreshDatabase;
 
 uses(TestCase::class)
     ->in('Unit');

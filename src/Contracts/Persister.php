@@ -1,6 +1,6 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds\Contracts;
+namespace Atlas\SuperFunds\Contracts;
 
 use Illuminate\Support\Collection;
 

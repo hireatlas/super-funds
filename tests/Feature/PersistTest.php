@@ -1,11 +1,11 @@
 <?php
 
-use Atlas\LaravelAustralianSuperannuationFunds\Downloader;
-use Atlas\LaravelAustralianSuperannuationFunds\Models\SuperannuationFund;
-use Atlas\LaravelAustralianSuperannuationFunds\Parser;
-use Atlas\LaravelAustralianSuperannuationFunds\Persister;
+use Atlas\SuperFunds\Downloader;
+use Atlas\SuperFunds\Models\SuperFund;
+use Atlas\SuperFunds\Parser;
+use Atlas\SuperFunds\Persister;
 
-it('can persist the list of superannuation funds', function () {
+it('can persist the list of super funds', function () {
     /** @var Downloader $downloader */
     $downloader = app(Downloader::class);
 
@@ -17,11 +17,11 @@ it('can persist the list of superannuation funds', function () {
     $dtos = $parser->parse($file);
 
     /** @var Persister $persister */
-    $persister = new Persister(SuperannuationFund::class);
+    $persister = new Persister(SuperFund::class);
 
-    $this->assertDatabaseCount('superannuation_funds', 0);
+    $this->assertDatabaseCount('super_funds', 0);
 
     $persister->persist($dtos);
 
-    $this->assertDatabaseCount('superannuation_funds', $dtos->count());
+    $this->assertDatabaseCount('super_funds', $dtos->count());
 });

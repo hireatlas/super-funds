@@ -1,8 +1,8 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds\Tests;
+namespace Atlas\SuperFunds\Tests;
 
-use Atlas\LaravelAustralianSuperannuationFunds\ServiceProvider;
+use Atlas\SuperFunds\ServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

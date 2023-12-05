@@ -1,8 +1,8 @@
 <?php
 
-use Atlas\LaravelAustralianSuperannuationFunds\Downloader;
+use Atlas\SuperFunds\Downloader;
 
-it('can download the list of superannuation funds', function () {
+it('can download the list of super funds', function () {
     /** @var Downloader $downloader */
     $downloader = app(Downloader::class);
 

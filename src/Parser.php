@@ -1,10 +1,10 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds;
+namespace Atlas\SuperFunds;
 
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Parser as ParserContract;
-use Atlas\LaravelAustralianSuperannuationFunds\DTOs\SuperannuationFundDTO;
-use Atlas\LaravelAustralianSuperannuationFunds\Exceptions\ParseException;
+use Atlas\SuperFunds\Contracts\Parser as ParserContract;
+use Atlas\SuperFunds\DTOs\SuperFundDTO;
+use Atlas\SuperFunds\Exceptions\ParseException;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Stringable;
@@ -64,7 +64,7 @@ class Parser implements ParserContract
 
                     $valid = $validFrom->isPast() && ($validTo === null || $validTo->isFuture());
 
-                    return new SuperannuationFundDTO(
+                    return new SuperFundDTO(
                         abn                   : $row
                             ->substr(0, 11)
                             ->trim(),

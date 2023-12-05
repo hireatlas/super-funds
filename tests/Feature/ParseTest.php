@@ -1,10 +1,10 @@
 <?php
 
-use Atlas\LaravelAustralianSuperannuationFunds\Downloader;
-use Atlas\LaravelAustralianSuperannuationFunds\DTOs\SuperannuationFundDTO;
-use Atlas\LaravelAustralianSuperannuationFunds\Parser;
+use Atlas\SuperFunds\Downloader;
+use Atlas\SuperFunds\DTOs\SuperFundDTO;
+use Atlas\SuperFunds\Parser;
 
-it('can parse the list of superannuation funds', function () {
+it('can parse the list of super funds', function () {
     /** @var Downloader $downloader */
     $downloader = app(Downloader::class);
 
@@ -19,5 +19,5 @@ it('can parse the list of superannuation funds', function () {
         ->not->toBeEmpty();
 
     expect($result->first())
-        ->toBeInstanceOf(SuperannuationFundDTO::class);
+        ->toBeInstanceOf(SuperFundDTO::class);
 });

@@ -1,11 +1,11 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds\Models;
+namespace Atlas\SuperFunds\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class SuperannuationFund extends Model
+class SuperFund extends Model
 {
     protected $casts = [
         'restricts_contributions' => 'boolean',
@@ -15,7 +15,7 @@ class SuperannuationFund extends Model
     ];
 
     /**
-     * Scope a query to only include valid superannuation funds.
+     * Scope a query to only include valid super funds.
      */
     public function scopeValid(Builder $query): void
     {

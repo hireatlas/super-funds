@@ -1,10 +1,10 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds;
+namespace Atlas\SuperFunds;
 
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Downloader as DownloaderContract;
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Parser as ParserContract;
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Persister as PersisterContract;
+use Atlas\SuperFunds\Contracts\Downloader as DownloaderContract;
+use Atlas\SuperFunds\Contracts\Parser as ParserContract;
+use Atlas\SuperFunds\Contracts\Persister as PersisterContract;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -31,7 +31,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         $this->app->bind(PersisterContract::class, function () {
-            return new Persister(SuperannuationFunds::$model);
+            return new Persister(SuperFunds::$model);
         });
     }
 
@@ -42,7 +42,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function registerMigrations()
     {
-        if (SuperannuationFunds::$runsMigrations && $this->app->runningInConsole()) {
+        if (SuperFunds::$runsMigrations && $this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         }
     }
@@ -57,7 +57,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../database/migrations' => $this->app->databasePath('migrations'),
-            ], 'superannuation-funds-migrations');
+            ], 'super-funds-migrations');
         }
     }
 
@@ -70,7 +70,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Console\UpdateSuperannuationFunds::class,
+                Console\UpdateSuperFunds::class,
             ]);
         }
     }

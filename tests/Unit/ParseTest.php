@@ -1,8 +1,8 @@
 <?php
 
-use Atlas\LaravelAustralianSuperannuationFunds\DTOs\SuperannuationFundDTO;
-use Atlas\LaravelAustralianSuperannuationFunds\Exceptions\ParseException;
-use Atlas\LaravelAustralianSuperannuationFunds\Parser;
+use Atlas\SuperFunds\DTOs\SuperFundDTO;
+use Atlas\SuperFunds\Exceptions\ParseException;
+use Atlas\SuperFunds\Parser;
 use Illuminate\Support\Carbon;
 
 it('can parse an empty file', function (string $file) {
@@ -18,7 +18,7 @@ it('can parse an empty file', function (string $file) {
         'empty-with-header-and-footer' => file_get_contents(__DIR__.'/stubs/empty-with-header-and-footer.txt'),
     ]);
 
-it('can parse the list of superannuation funds', function (string $file) {
+it('can parse the list of super funds', function (string $file) {
     $parser = new Parser();
 
     $result = $parser->parse($file);
@@ -27,7 +27,7 @@ it('can parse the list of superannuation funds', function (string $file) {
         ->not->toBeEmpty();
 
     expect($result->first())
-        ->toBeInstanceOf(SuperannuationFundDTO::class);
+        ->toBeInstanceOf(SuperFundDTO::class);
 })
     ->with([
         'valid-data' => file_get_contents(__DIR__.'/stubs/valid-data.txt'),
@@ -43,11 +43,11 @@ it('can correctly parse a valid item', function (string $file) {
     expect($result)
         ->toHaveCount(1);
 
-    /** @var SuperannuationFundDTO $superannuationFund */
-    $superannuationFund = $result->first();
+    /** @var SuperFundDTO $superFund */
+    $superFund = $result->first();
 
-    expect($superannuationFund)
-        ->toBeInstanceOf(SuperannuationFundDTO::class)
+    expect($superFund)
+        ->toBeInstanceOf(SuperFundDTO::class)
         ->toHaveProperties([
             'abn' => '12345678901',
             'fundName' => 'ACME SUPERANNUATION FUND',
@@ -71,11 +71,11 @@ it('can correctly parse a valid but expired item', function (string $file) {
     expect($result)
         ->toHaveCount(1);
 
-    /** @var SuperannuationFundDTO $superannuationFund */
-    $superannuationFund = $result->first();
+    /** @var SuperFundDTO $superFund */
+    $superFund = $result->first();
 
-    expect($superannuationFund)
-        ->toBeInstanceOf(SuperannuationFundDTO::class)
+    expect($superFund)
+        ->toBeInstanceOf(SuperFundDTO::class)
         ->toHaveProperties([
             'abn' => '12345678901',
             'fundName' => 'ACME SUPERANNUATION FUND',

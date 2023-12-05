@@ -1,8 +1,8 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds\DTOs;
+namespace Atlas\SuperFunds\DTOs;
 
-class SuperannuationFundDTO
+class SuperFundDTO
 {
     public function __construct(
         public readonly string $abn,

@@ -1,7 +1,7 @@
 <?php
 
-use Atlas\LaravelAustralianSuperannuationFunds\Downloader;
-use Atlas\LaravelAustralianSuperannuationFunds\Exceptions\DownloadException;
+use Atlas\SuperFunds\Downloader;
+use Atlas\SuperFunds\Exceptions\DownloadException;
 use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
@@ -11,7 +11,7 @@ beforeEach(function () {
     ]);
 });
 
-it('can download the list of superannuation funds', function () {
+it('can download the list of super funds', function () {
     $downloader = new Downloader(
         'test.com/ok'
     );

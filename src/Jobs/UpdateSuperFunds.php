@@ -1,14 +1,14 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds\Jobs;
+namespace Atlas\SuperFunds\Jobs;
 
-use Atlas\LaravelAustralianSuperannuationFunds\SuperannuationFunds;
+use Atlas\SuperFunds\SuperFunds;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 
-class UpdateSuperannuationFunds implements ShouldQueue
+class UpdateSuperFunds implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -19,8 +19,8 @@ class UpdateSuperannuationFunds implements ShouldQueue
      *
      * @return void
      */
-    public function handle(SuperannuationFunds $superannuationFunds)
+    public function handle(SuperFunds $superFunds)
     {
-        $superannuationFunds->persist();
+        $superFunds->persist();
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds;
+namespace Atlas\SuperFunds;
 
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Downloader;
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Parser;
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Persister;
-use Atlas\LaravelAustralianSuperannuationFunds\Models\SuperannuationFund;
+use Atlas\SuperFunds\Contracts\Downloader;
+use Atlas\SuperFunds\Contracts\Parser;
+use Atlas\SuperFunds\Contracts\Persister;
+use Atlas\SuperFunds\Models\SuperFund;
 use Illuminate\Support\Collection;
 
-class SuperannuationFunds
+class SuperFunds
 {
     /**
      * Indicates if the package migrations will be run.
@@ -18,11 +18,11 @@ class SuperannuationFunds
     public static $runsMigrations = true;
 
     /**
-     * The superannuation fund model class name.
+     * The super fund model class name.
      *
      * @var string
      */
-    public static $model = SuperannuationFund::class;
+    public static $model = SuperFund::class;
 
     public function __construct(
         private Downloader $downloader,
@@ -41,11 +41,11 @@ class SuperannuationFunds
     }
 
     /**
-     * Set the superannuation fund model class name.
+     * Set the super fund model class name.
      */
-    public static function useModel(string $superannuationFundModel): void
+    public static function useModel(string $superFundModel): void
     {
-        static::$model = $superannuationFundModel;
+        static::$model = $superFundModel;
     }
 
     public function fetch(): Collection

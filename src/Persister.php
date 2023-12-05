@@ -1,10 +1,10 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds;
+namespace Atlas\SuperFunds;
 
-use Atlas\LaravelAustralianSuperannuationFunds\Contracts\Persister as PersisterContract;
-use Atlas\LaravelAustralianSuperannuationFunds\DTOs\SuperannuationFundDTO;
-use Atlas\LaravelAustralianSuperannuationFunds\Exceptions\PersistException;
+use Atlas\SuperFunds\Contracts\Persister as PersisterContract;
+use Atlas\SuperFunds\DTOs\SuperFundDTO;
+use Atlas\SuperFunds\Exceptions\PersistException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -41,7 +41,7 @@ class Persister implements PersisterContract
         $modelInstance::query()
             ->upsert(
                 $collection
-                    ->map(function (SuperannuationFundDTO $dto) {
+                    ->map(function (SuperFundDTO $dto) {
                         return [
                             'usi' => $dto->usi,
                             'abn' => $dto->abn,

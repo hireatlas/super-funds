@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('superannuation_funds', function (Blueprint $table) {
+        Schema::create('super_funds', function (Blueprint $table) {
             $table->id();
             $table->string('usi')->unique();
             $table->string('abn')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('superannuation_funds');
+        Schema::dropIfExists('super_funds');
     }
 };

@@ -1,6 +1,6 @@
 <?php
 
-namespace Atlas\LaravelAustralianSuperannuationFunds\Tests;
+namespace Atlas\SuperFunds\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
