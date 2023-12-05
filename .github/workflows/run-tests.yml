@@ -36,4 +36,4 @@ jobs:
               composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run:  composer test
+        run:  composer test-coverage
