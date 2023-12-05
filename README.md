@@ -1,5 +1,9 @@
 # Fetch the list of Australian superannuation funds straight from the government
 
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/hireatlas/super-funds/run-tests.yml)](https://github.com/hireatlas/super-funds/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/hireatlas/super-funds.svg)](https://packagist.org/packages/hireatlas/super-funds)
+[![Total Downloads](https://img.shields.io/packagist/dt/hireatlas/super-funds.svg)](https://packagist.org/packages/hireatlas/super-funds)
+
 This package is a fairly lightweight Laravel wrapper around the service provided by the Australian government that lists all superannuation funds and products by their identifier (USI).
 
 You can find the download [here](https://superfundlookup.gov.au/Tools/DownloadUsiList?download=usi), and structural information about the download [here](https://superfundlookup.gov.au/Tools/DownloadUsiList). 
